@@ -128,6 +128,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 echo "--- Deploying application to Staging Environment ---"
+                sh 'chmod +x deploy.sh'
                 // Execute the deploy script
                 sh './deploy.sh'
             }
