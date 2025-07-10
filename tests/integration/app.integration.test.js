@@ -7,7 +7,7 @@ describe('Integration Tests for Deployed Application', () => {
     try {
       const response = await axios.get(API_URL);
       expect(response.status).toBe(200);
-      expect(response.data).toBe('Hello from the Mega-Lab Node.js App!');
+      expect(response.data).toBe('Hello from the DevOps-Lab Node.js App!');
     } catch (error) {
       console.error('Integration Test Error (GET /):', error.message);
       throw error; // Re-throw to fail the test
