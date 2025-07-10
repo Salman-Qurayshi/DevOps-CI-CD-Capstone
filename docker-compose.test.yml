@@ -16,6 +16,7 @@ services:
       dockerfile: Dockerfile
     expose:
       - "3000" 
+    networks:
       - test-network
 
   integration-tests:
