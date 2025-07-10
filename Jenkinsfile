@@ -48,8 +48,8 @@ pipeline {
                         -Dsonar.projectKey=${env.JOB_NAME} \
                         -Dsonar.projectName=${env.JOB_NAME} \
                         -Dsonar.sources=. \
-                        -Dsonar.host.url=${SONARQUBE_URL} \
-                        -Dsonar.login=${SONARQUBE_TOKEN} || true"
+                        -Dsonar.host.url=${SONAR_HOST_URL} \
+                        -Dsonar.login=${SONAR_AUTH_TOKEN} || true"
                 }
             }
         }
