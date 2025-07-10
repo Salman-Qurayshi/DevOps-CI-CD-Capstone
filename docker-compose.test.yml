@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  unit-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: ["npm", "run", "test:unit"]
+    volumes:
+      - .:/usr/src/app 
+    networks:
+      - test-network
+
+  integration-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - "3000" 
+      - test-network
+
+  integration-tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    command: ["npm", "run", "test:integration"] 
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - integration-app
+    networks:
+      - test-network
+    environment:
+      API_URL: http://integration-app:3000
+networks:
+  test-network:
+    driver: bridge
